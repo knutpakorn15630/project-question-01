@@ -3,30 +3,35 @@
         <div class="container">
             <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="m-0">แบบสอบถามความสุขมวลรวม (ฉบับย่อ)</h3>
-                    <br>
-                    <h6 class="card-subtitle mb-2 text-muted">ตอนที่1 ข้อมูลทั่วไป</h6>
+                    <h3 class="m-0">{{DataResQuestion.nameForm}}</h3>
                     <!-- /.card-tools -->
                 </div>
             </div>
         </div>
     </div>
     <!-- /.card -->
-    <div class="row" style="margin-top: 5px;">
+    <div class="row" style="margin-top: 5px;" *ngFor="let item of DataResQuestion.mainTitle;  let i = index">
         <div class="container">
             <div class="card">
-                <div class="card-body">
-                    <label>1. เพศ</label>
-                    <div class="form-group" style="padding-bottom: 5px;">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="radio1">
-                                ชาย
-                            </label>
+                <div class="card-header" style="margin-top: 10px;">
+                    <h5 class="card-subtitle mb-2 text-muted">{{item.mainTitle}}</h5>
+                    <!-- /.card-tools -->
+                </div>
+                <div class="card-body" style="margin-left: 1rem;">
+                    <span *ngFor="let item2 of item.titles; let i2 = index" >
+                        <label>{{item2.title}}</label>
+                        <div class="form-group" style="padding-bottom: 5px;" >
+                            <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
+                                <label class="form-check-label">
+                                    <input class="form-checkmark-input" type="radio" (click)="selectItem(i, i2, i3)" [checked]="item3.isSelect">
+                                    {{item3.nameOption}}
+                                </label>
+                            </div>
                         </div>
-                    </div>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
