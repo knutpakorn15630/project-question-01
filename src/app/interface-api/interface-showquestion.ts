@@ -38,3 +38,34 @@ export interface ResOption {
   titleId: number;
   isSelect: boolean;
 }
+
+
+
+
+// ----------------------------- บันทึก-----------------------------------
+
+
+export interface ReqDataQuestion {
+  formId: number;
+  mainTitle: ReqMainTitle[];
+}
+
+export interface ReqMainTitle {
+  id: number;
+  titles: ReqTitle[];
+}
+
+export interface ReqTitle {
+  id: number;
+  options: ReqOption[];
+}
+
+export interface ReqOption {
+  id: number;
+}
+
+
+
+export interface ResDataQuestion {
+  text: string;
+}

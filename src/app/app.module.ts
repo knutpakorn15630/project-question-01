@@ -8,11 +8,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ComponentAdminComponent } from './components/component-admin/component-admin.component';
+import { ComponentFormComponent } from './components/component-form/component-form.component';
+import { ComponentTotalComponent } from './components/component-total/component-total.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentQuestionComponent
+    ComponentQuestionComponent,
+    DashboardComponent,
+    ComponentAdminComponent,
+    ComponentFormComponent,
+    ComponentTotalComponent,
   ],
   imports: [
     BrowserModule,
