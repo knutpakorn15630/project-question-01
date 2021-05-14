@@ -12,6 +12,7 @@
     <!-- /.card -->
     <div class="row" style="margin-top: 5px;" *ngFor="let item of DataResQuestion.mainTitle;  let i = index">
         <div class="container">
+
             <div class="card">
                 <div class="card-header" style="margin-top: 10px;">
                     <h5 class="card-subtitle mb-2 ">{{item.mainTitle}}</h5>
@@ -20,6 +21,7 @@
                 <div class="card-body" style="margin-left: 1rem;">
                     <span *ngFor="let item2 of item.titles; let i2 = index">
                         <label>{{item2.title}}</label>
+                        <span *ngIf="CheckRed === true" style="color: red;">* จำเป็นต้องเลือก</span>
                         <div class="form-group" style="padding-bottom: 5px;">
                             <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
                                 <label class="form-check-label">
@@ -27,6 +29,7 @@
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}
                                 </label>
+                                {{item3 | json}}
                             </div>
                         </div>
                     </span>

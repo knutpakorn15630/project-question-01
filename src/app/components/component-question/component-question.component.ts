@@ -12,6 +12,7 @@ export class ComponentQuestionComponent implements OnInit {
 
   DataResQuestion: ResShowQuestion = null;
   TotalResQuestion: ResDataQuestion = null;
+  CheckRed = false;
 
   constructor(private callApi: ServiceApiService) { }
 
@@ -36,31 +37,37 @@ export class ComponentQuestionComponent implements OnInit {
     );
   }
 
+
   SubmitDataQuestion() {
     const body: ReqDataQuestion = {
       formId: this.DataResQuestion.id,
       mainTitle: []
     };
 
-    for (const DataTitle of this.DataResQuestion.mainTitle) {
-      const title: ReqMainTitle = {
-        id: DataTitle.id,
+    for (const data1 of this.DataResQuestion.mainTitle) {
+      const mainTitle: ReqMainTitle = {
+        id: data1.id,
         titles: []
       };
-      for (const DataOption of DataTitle.titles) {
-        const Option: ReqTitle = {
-          id: DataOption.mainTitleId,
+      for (const data2 of data1.titles) {
+        const title: ReqTitle = {
+          id: data2.id,
           options: []
         };
-        for (const IdOption of DataOption.options) {
-          if (!IdOption.isSelect) { continue; }
-          const IdOption2: ReqOption = {
-            id: IdOption.id
-          };
-          Option.options.push(IdOption2);
+        if (title.options.length === 0) {
+          this.CheckRed = true;
         }
-        title.titles.push(Option);
-        if (Option.options.length === 0) {
+        for (const dataOP of data2.options) {
+          if (!dataOP.isSelect) {
+            continue;
+          }
+          const option: ReqOption = {
+            id: dataOP.id
+          };
+          title.options.push(option);
+        }
+        mainTitle.titles.push(title);
+        if (title.options.length === 0) {
           Swal.fire({
             icon: 'warning',
             title: 'กรุณาเลือกตัวเลือกให้ครบ!',
@@ -70,17 +77,13 @@ export class ComponentQuestionComponent implements OnInit {
           return;
         }
       }
-      setTimeout(() => {
-        body.mainTitle.push(title);
-        console.log('this body', JSON.stringify(body));
-      }, 1000);
+      body.mainTitle.push(mainTitle);
     }
-    console.log(body);
-
     this.callApi.getCheckQuestion(body).subscribe(
       (res) => {
+        // console.log('111');
         this.TotalResQuestion = res;
-        console.log(`this Total ${this.TotalResQuestion}`);
+        // console.log(`this Total ${this.TotalResQuestion}`);
         Swal.fire({
           icon: 'success',
           title: 'บันทึกข้อมูลเสร็จสิ้น',
@@ -93,5 +96,6 @@ export class ComponentQuestionComponent implements OnInit {
       }
     );
   }
+
 }
 

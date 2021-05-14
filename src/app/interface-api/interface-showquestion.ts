@@ -64,8 +64,6 @@ export interface ReqOption {
   id: number;
 }
 
-
-
 export interface ResDataQuestion {
   text: string;
 }
