@@ -37,6 +37,7 @@ export interface ResOption {
   updatedAt: string;
   titleId: number;
   isSelect: boolean;
+  isCheck: number;
 }
 
 

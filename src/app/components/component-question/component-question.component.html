@@ -24,7 +24,7 @@
                         <span *ngIf="CheckRed === true" style="color: red;">* จำเป็นต้องเลือก</span>
                         <div class="form-group" style="padding-bottom: 5px;">
                             <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
-                                <label class="form-check-label">
+                                <label class="form-check-label" style="margin-bottom: 10px;">
                                     <input class="form-checkmark-input" type="radio" (click)="selectItem(i, i2, i3)"
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}
@@ -37,8 +37,6 @@
             </div> 
         </div>
     </div>
-
-
     <div class="card-footer">
         <button type="submit" class="btn btn-primary  float-right" (click)="SubmitDataQuestion()">บันทึก</button>
     </div>

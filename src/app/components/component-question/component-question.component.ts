@@ -24,8 +24,10 @@ export class ComponentQuestionComponent implements OnInit {
     this.DataResQuestion.mainTitle[i1].titles[i2].options.forEach((x, index) => {
       this.DataResQuestion.mainTitle[i1].titles[i2].options[index].text = '';
       this.DataResQuestion.mainTitle[i1].titles[i2].options[index].isSelect = false;
+      this.DataResQuestion.mainTitle[i1].titles[i2].options[index].isCheck = 0;
     });
     this.DataResQuestion.mainTitle[i1].titles[i2].options[i3].isSelect = true;
+    this.DataResQuestion.mainTitle[i1].titles[i2].options[i3].isCheck = 1;
   }
 
   ShowDataQuestion() {
@@ -35,6 +37,18 @@ export class ComponentQuestionComponent implements OnInit {
         // console.log(`this is ----------- ${this.DataResQuestion}`);
       }
     );
+  }
+
+  checkIsSelect() {
+    this.DataResQuestion.mainTitle.forEach((x) => {
+      x.titles.forEach((a) => {
+        a.options.forEach((b) => {
+          if (!b.isSelect) {
+            this.CheckRed = true;
+          }
+        });
+      });
+    });
   }
 
 
@@ -54,9 +68,6 @@ export class ComponentQuestionComponent implements OnInit {
           id: data2.id,
           options: []
         };
-        if (title.options.length === 0) {
-          this.CheckRed = true;
-        }
         for (const dataOP of data2.options) {
           if (!dataOP.isSelect) {
             continue;

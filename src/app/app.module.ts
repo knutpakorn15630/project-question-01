@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ComponentAdminComponent } from './components/component-admin/component-admin.component';
 import { ComponentFormComponent } from './components/component-form/component-form.component';
 import { ComponentTotalComponent } from './components/component-total/component-total.component';
+import { ComponentLoginComponent } from './components/component-login/component-login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ComponentTotalComponent } from './components/component-total/component-
     ComponentAdminComponent,
     ComponentFormComponent,
     ComponentTotalComponent,
+    ComponentLoginComponent,
   ],
   imports: [
     BrowserModule,
