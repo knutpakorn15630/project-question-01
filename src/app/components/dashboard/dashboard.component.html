@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu"  role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a class="nav-link" routerLink='user'>Home</a>
+            <a class="nav-link" routerLink='form'>Home</a>
         </li>
     </ul>
     <ul class="navbar-nav ml-auto">
@@ -52,7 +52,7 @@
                                 </a>
                             </li>
                             <li class="nav-item" style="cursor: pointer;">
-                                <a class="nav-link" routerLink='/login'>
+                                <a class="nav-link" (click)="Logout()">
                                     <i class="fas fa-sign-out-alt"></i>
                                     <p>&nbsp; ออกจากระบบ</p>
                                 </a>

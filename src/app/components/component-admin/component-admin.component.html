@@ -6,7 +6,7 @@
                     <h1>ผู้ใช้งาน</h1>
                 </div>
                 <div class="col-sm-2">
-                    <button type="button" class="btn btn-block bg-success float-right"> <i
+                    <button type="button" class="btn btn-block bg-success float-right" (click)="openLg()"> <i
                             class="fas fa-plus">&nbsp;</i>เพิ่มข้อมูล</button>
                     <!-- <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -28,25 +28,26 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
-                                        <th>ชื่อ-นามสกุล</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">สถานะ</th>
-                                        <th scope="col">วันที่-สร้าง</th>
-                                        <th scope="col">วันที่-อัพเดท</th>
+                                        <th>ชื่อ</th>
+                                        <th>นามสกุล</th>
+                                        <th>Username</th>
+                                        
+                                        <th>วันที่-สร้าง</th>
+                                        <th>วันที่-อัพเดท</th>
                                         <th style="width: 150px"></th>
                                         <th style="width: 150px"></th>
                                         <!-- <th style="width: 150px"></th> -->
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>jone test</td>
-                                        <td>test</td>
-                                        <td>admin</td>
-                                        <td>10/12/2908</td>
-                                        <td>10/12/2908</td>
-                                        <td><button type="button" class="btn btn-block bg-primary"> <i
+                                <tbody *ngIf="DataUser && DataUser.data && DataUser.data.length > 0">
+                                    <tr *ngFor="let Data of DataUser.data; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{Data.firstName}}</td>
+                                        <td>{{Data.lastName}}</td>
+                                        <td>{{Data.userName}}</td>
+                                        <td>{{Data.createdAt | pipedatethai: 'medium'}}</td>
+                                        <td>{{Data.updatedAt | pipedatethai: 'medium'}}</td>
+                                        <td><button type="button" class="btn btn-block bg-primary" (click)="UpdateData(Data.id)"> <i
                                                     class="fas fa-upload">&nbsp;</i>แก้ไขข้อมูล</button>
                                         </td>
                                         <td><button type="button" class="btn btn-block bg-danger"> <i
@@ -54,7 +55,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                                <tbody>
+                                <tbody *ngIf="!DataUser && !DataUser.data && DataUser.data.length == 0">
                                     <tr>
                                         <td colspan="8" style="text-align: center;">ไม่มีข้อมูล</td>
                                     </tr>
@@ -67,4 +68,105 @@
             </div>
         </div>
     </section>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="content">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-teal">
+                <h4 class="modal-title" id="modal-basic-title">เพิ่มข้อมูลสมาชิก</h4>
+                <button type="button" class="close" aria-label="Close" (click)="hideModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label >ชื่อ</label>
+                            <span *ngIf="CheckRed === true" style="color: red;" >*</span>
+                            <input type="text" class="form-control" placeholder="ชื่อ..." name="name"
+                                [(ngModel)]="ngMember.name" [ngClass]="{'is-invalid': isCheck&&!ngMember.name}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>นามสกุล</label>
+                            <span *ngIf="CheckRed === true" style="color: red;" >*</span>
+                            <input type="text" class="form-control" placeholder="นามสกุล..." name="lastName"
+                                [(ngModel)]="ngMember.lastName" [ngClass]="{'is-invalid': isCheck&&!ngMember.lastName}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <span *ngIf="CheckRed === true" style="color: red;" >*</span>
+                            <input type="text" class="form-control" placeholder="Username..." name="username"
+                                [(ngModel)]="ngMember.user" [ngClass]="{'is-invalid': isCheck&&!ngMember.user}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <span *ngIf="CheckRed  === true" style="color: red;" >*</span>
+                            <input type="password" class="form-control" placeholder="Password..." name="password"
+                                [(ngModel)]="ngMember.pass" [ngClass]="{'is-invalid': isCheck&&!ngMember.pass}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- {{ngMember|json}} -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="createUer()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="Update">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <h4 class="modal-title" id="modal-basic-title">แก้ไขข้อมูล</h4>
+                <button type="button" class="close" aria-label="Close" (click)="hideModal2()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>ชื่อ</label>
+                            <input type="text" class="form-control" placeholder="ชื่อ..." name="name"
+                                [(ngModel)]="ngUpdate.firstName">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>นาม-สกุล</label>
+                            <input type="text" class="form-control" placeholder="นาม-สกุล..." name="lastName"
+                                [(ngModel)]="ngUpdate.lastName">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>ยืนยัน password ก่อนจะแก้ไขข้อมูล</label>
+                            <input type="password" class="form-control" placeholder="Password" name="name"
+                                [(ngModel)]="testPassWord">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- {{ngMember|json}} -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="updateUser()">Save</button>
+            </div>
+        </div>
+    </div>
 </div>

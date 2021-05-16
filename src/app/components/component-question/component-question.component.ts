@@ -43,7 +43,7 @@ export class ComponentQuestionComponent implements OnInit {
     this.DataResQuestion.mainTitle.forEach((x) => {
       x.titles.forEach((a) => {
         a.options.forEach((b) => {
-          if (!b.isSelect) {
+          if (b.isCheck === 1) {
             this.CheckRed = true;
           }
         });
@@ -77,7 +77,6 @@ export class ComponentQuestionComponent implements OnInit {
           };
           title.options.push(option);
         }
-        mainTitle.titles.push(title);
         if (title.options.length === 0) {
           Swal.fire({
             icon: 'warning',
@@ -85,8 +84,10 @@ export class ComponentQuestionComponent implements OnInit {
             showConfirmButton: false,
             timer: 1000
           });
+          this.CheckRed = true;
           return;
         }
+        mainTitle.titles.push(title);
       }
       body.mainTitle.push(mainTitle);
     }

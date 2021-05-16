@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { ComponentQuestionComponent } from './components/component-question/component-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ComponentAdminComponent } from './components/component-admin/component-admin.component';
 import { ComponentFormComponent } from './components/component-form/component-form.component';
 import { ComponentTotalComponent } from './components/component-total/component-total.component';
 import { ComponentLoginComponent } from './components/component-login/component-login.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { InterceptorInterceptor } from './service/interceptor.interceptor';
+import { PipedatethaiPipe } from './pipes/pipedatethai.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,17 +26,24 @@ import { ComponentLoginComponent } from './components/component-login/component-
     ComponentFormComponent,
     ComponentTotalComponent,
     ComponentLoginComponent,
+    PipedatethaiPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // FormsModule,
-    // ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule,
-    // NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

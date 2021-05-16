@@ -6,9 +6,15 @@ import { ComponentLoginComponent } from './components/component-login/component-
 import { ComponentQuestionComponent } from './components/component-question/component-question.component';
 import { ComponentTotalComponent } from './components/component-total/component-total.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GuardLoginGuard } from './guards/guard-login.guard';
 
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'question',
+    pathMatch: 'full',
+  },
   {
     path: 'question',
     component: ComponentQuestionComponent,
@@ -18,6 +24,7 @@ const routes: Routes = [
     component: ComponentLoginComponent
   },
   {
+    canActivate: [GuardLoginGuard],
     path: 'dashboard',
     component: DashboardComponent,
     children: [

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="DataResQuestion && DataResQuestion.mainTitle && DataResQuestion.mainTitle.length > 0">
     <div class="row" style="margin-top: 1rem;">
         <div class="container">
             <div class="card card-outline card-primary">
@@ -12,7 +12,6 @@
     <!-- /.card -->
     <div class="row" style="margin-top: 5px;" *ngFor="let item of DataResQuestion.mainTitle;  let i = index">
         <div class="container">
-
             <div class="card">
                 <div class="card-header" style="margin-top: 10px;">
                     <h5 class="card-subtitle mb-2 ">{{item.mainTitle}}</h5>
@@ -20,8 +19,7 @@
                 </div>
                 <div class="card-body" style="margin-left: 1rem;">
                     <span *ngFor="let item2 of item.titles; let i2 = index">
-                        <label>{{item2.title}}</label>
-                        <span *ngIf="CheckRed === true" style="color: red;">* จำเป็นต้องเลือก</span>
+                        <label class="col-form-label" [ngClass]="{'is-green': CheckRed}">{{item2.title}}</label>
                         <div class="form-group" style="padding-bottom: 5px;">
                             <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
                                 <label class="form-check-label" style="margin-bottom: 10px;">
@@ -29,7 +27,7 @@
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}
                                 </label>
-                                {{item3 | json}}
+                                <!-- {{item3 | json}} -->
                             </div>
                         </div>
                     </span>
@@ -37,6 +35,8 @@
             </div> 
         </div>
     </div>
+
+
     <div class="card-footer">
         <button type="submit" class="btn btn-primary  float-right" (click)="SubmitDataQuestion()">บันทึก</button>
     </div>
