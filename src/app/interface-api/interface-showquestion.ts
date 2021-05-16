@@ -25,6 +25,7 @@ export interface ResTitle {
   createdAt: string;
   updatedAt: string;
   mainTitleId: number;
+  isCheck: boolean;
   options: ResOption[];
 }
 
@@ -37,7 +38,6 @@ export interface ResOption {
   updatedAt: string;
   titleId: number;
   isSelect: boolean;
-  isCheck?: number;
 }
 
 
