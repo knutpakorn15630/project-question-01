@@ -6,6 +6,7 @@ import { ComponentLoginComponent } from './components/component-login/component-
 import { ComponentQuestionComponent } from './components/component-question/component-question.component';
 import { ComponentTotalComponent } from './components/component-total/component-total.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { GuardLoginGuard } from './guards/guard-login.guard';
 
 
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'question',
     component: ComponentQuestionComponent,
+  },
+  {
+    path: 'thankyou',
+    component: ThankyouComponent
   },
   {
     path: 'login',

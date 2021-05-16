@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReqDataQuestion, ReqMainTitle, ReqOption, ReqTitle, ResDataQuestion, ResShowQuestion } from 'src/app/interface-api/interface-showquestion';
 import { ServiceApiService } from 'src/app/service/service-api.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,7 @@ export class ComponentQuestionComponent implements OnInit {
   TotalResQuestion: ResDataQuestion = null;
   CheckRed = false;
 
-  constructor(private callApi: ServiceApiService) { }
+  constructor(private callApi: ServiceApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.ShowDataQuestion();
@@ -102,6 +103,7 @@ export class ComponentQuestionComponent implements OnInit {
           showConfirmButton: false,
           timer: 1000
         });
+        this.router.navigateByUrl('thankyou');
       },
       (err) => {
         console.log(err);

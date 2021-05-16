@@ -16,6 +16,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { InterceptorInterceptor } from './service/interceptor.interceptor';
 import { PipedatethaiPipe } from './pipes/pipedatethai.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ComponentTotalComponent,
     ComponentLoginComponent,
     PipedatethaiPipe,
+    ThankyouComponent,
   ],
   imports: [
     BrowserModule,
