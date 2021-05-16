@@ -43,7 +43,7 @@ export class ComponentQuestionComponent implements OnInit {
     this.DataResQuestion.mainTitle.forEach((x) => {
       x.titles.forEach((a) => {
         a.options.forEach((b) => {
-          if (b.isCheck === 1) {
+          if (!b.isCheck  || !b.isSelect) {
             this.CheckRed = true;
           }
         });

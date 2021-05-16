@@ -19,7 +19,8 @@
                 </div>
                 <div class="card-body" style="margin-left: 1rem;">
                     <span *ngFor="let item2 of item.titles; let i2 = index">
-                        <label class="col-form-label" [ngClass]="{'is-green': CheckRed}">{{item2.title}}</label>
+                        <label class="col-form-label">{{item2.title}}</label>
+                        <span *ngIf="CheckRed === true" style="color: red;">*</span>
                         <div class="form-group" style="padding-bottom: 5px;">
                             <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
                                 <label class="form-check-label" style="margin-bottom: 10px;">
@@ -27,17 +28,17 @@
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}
                                 </label>
-                                <!-- {{item3 | json}} -->
+                                {{item3 | json}}
                             </div>
                         </div>
                     </span>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 
 
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary  float-right" (click)="SubmitDataQuestion()">บันทึก</button>
+        <button type="submit" class="btn btn-primary  float-right" (click)="checkIsSelect()">บันทึก</button>
     </div>
 </div>
