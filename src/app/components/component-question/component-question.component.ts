@@ -24,10 +24,10 @@ export class ComponentQuestionComponent implements OnInit {
     this.DataResQuestion.mainTitle[i1].titles[i2].options.forEach((x, index) => {
       this.DataResQuestion.mainTitle[i1].titles[i2].options[index].text = '';
       this.DataResQuestion.mainTitle[i1].titles[i2].options[index].isSelect = false;
-      this.DataResQuestion.mainTitle[i1].titles[i2].options[index].isCheck = 0;
     });
     this.DataResQuestion.mainTitle[i1].titles[i2].options[i3].isSelect = true;
-    this.DataResQuestion.mainTitle[i1].titles[i2].options[i3].isCheck = 1;
+    this.DataResQuestion.mainTitle[i1].titles[i2].isCheck = true;
+
   }
 
   ShowDataQuestion() {
@@ -39,17 +39,17 @@ export class ComponentQuestionComponent implements OnInit {
     );
   }
 
-  checkIsSelect() {
-    this.DataResQuestion.mainTitle.forEach((x) => {
-      x.titles.forEach((a) => {
-        a.options.forEach((b) => {
-          if (!b.isCheck  || !b.isSelect) {
-            this.CheckRed = true;
-          }
-        });
-      });
-    });
-  }
+  // checkIsSelect() {
+  //   this.DataResQuestion.mainTitle.forEach((x) => {
+  //     x.titles.forEach((a) => {
+  //       a.options.forEach((b) => {
+  //         if (b.isCheck === 1) {
+  //           this.CheckRed = true;
+  //         }
+  //       });
+  //     });
+  //   });
+  // }
 
 
   SubmitDataQuestion() {
