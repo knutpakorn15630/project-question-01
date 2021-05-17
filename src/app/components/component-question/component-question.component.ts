@@ -1,25 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgBroadcasterService } from 'ngx-broadcaster';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ReqDataQuestion, ReqMainTitle, ReqOption, ReqTitle, ResDataQuestion, ResShowQuestion } from 'src/app/interface-api/interface-showquestion';
 import { ServiceApiService } from 'src/app/service/service-api.service';
 import Swal from 'sweetalert2';
+declare var $: any;
 
 @Component({
   selector: 'app-component-question',
   templateUrl: './component-question.component.html',
   styleUrls: ['./component-question.component.scss']
 })
+
+
 export class ComponentQuestionComponent implements OnInit {
 
   DataResQuestion: ResShowQuestion = null;
   TotalResQuestion: ResDataQuestion = null;
   CheckRed = false;
 
-  constructor(private callApi: ServiceApiService, private router: Router) { }
+  swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  });
+
+  data = {
+    message: 'ส่งแบบสอบถาม'
+  };
+
+  data2 = {
+    text: ''
+  };
+
+  // tslint:disable-next-line:max-line-length
+  constructor(private callApi: ServiceApiService, private router: Router, private broadcaster: NgBroadcasterService, config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
     this.ShowDataQuestion();
   }
+
+
 
   selectItem(i1: number, i2: number, i3: number) {
     this.DataResQuestion.mainTitle[i1].titles[i2].options.forEach((x, index) => {
@@ -40,20 +67,40 @@ export class ComponentQuestionComponent implements OnInit {
     );
   }
 
-  // checkIsSelect() {
-  //   this.DataResQuestion.mainTitle.forEach((x) => {
-  //     x.titles.forEach((a) => {
-  //       a.options.forEach((b) => {
-  //         if (b.isCheck === 1) {
-  //           this.CheckRed = true;
-  //         }
-  //       });
-  //     });
-  //   });
-  // }
+  checkIsSelect() {
+
+    this.swalWithBootstrapButtons.fire({
+      title: 'เสร็จสิน',
+      text: 'You won\'t be able to revert this!',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'ถัดไป',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        this.swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        );
+      }
+    });
+    // setTimeout(() => {
+    //   this.broadcaster.emitEvent('test-even', this.data);
+    // }, 500);
+  }
 
 
-  SubmitDataQuestion() {
+  SubmitDataQuestion(test: any) {
     const body: ReqDataQuestion = {
       formId: this.DataResQuestion.id,
       mainTitle: []
@@ -96,19 +143,36 @@ export class ComponentQuestionComponent implements OnInit {
       (res) => {
         // console.log('111');
         this.TotalResQuestion = res;
-        // console.log(`this Total ${this.TotalResQuestion}`);
-        Swal.fire({
-          icon: 'success',
-          title: 'บันทึกข้อมูลเสร็จสิ้น',
-          showConfirmButton: false,
-          timer: 1000
-        });
-        this.router.navigateByUrl('thankyou');
+        if (res.mean >= 4.21) {
+          this.data2.text = 'มีความสุขมวลรวมในระดับสูงที่สุด';
+        } else if (res.mean >= 3.41) {
+          this.data2.text = 'มีความสุขมวลรวมในระดับสูง';
+        } else if (res.mean >= 2.61) {
+          this.data2.text = 'มีความสุขมวลรวมในระดับปานกลาง';
+        } else if (res.mean >= 1.81) {
+          this.data2.text = 'มีความสุขมวลรวมในระดับต่ำ ';
+        } else {
+          this.data2.text = 'มีความสุขมวลรวมในระดับต่ำที่สุด';
+        }
+        console.log(`this Total ${this.TotalResQuestion}`);
+        this.open(test);
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+
+  openLg() {
+    $('#content').modal('show');
+  }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  SwPage() {
+    this.router.navigateByUrl('thankyou');
   }
 
 }

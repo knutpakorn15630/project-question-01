@@ -71,9 +71,9 @@
 </div>
 
 <div class="modal fade bd-example-modal-lg" id="content">
-    <div class="modal-dialog">
+    <div class="modal-dialog">  
         <div class="modal-content">
-            <div class="modal-header bg-teal">
+            <div class="modal-header ">
                 <h4 class="modal-title" id="modal-basic-title">เพิ่มข้อมูลสมาชิก</h4>
                 <button type="button" class="close" aria-label="Close" (click)="hideModal()">
                     <span aria-hidden="true">&times;</span>
@@ -130,7 +130,7 @@
 <div class="modal fade bd-example-modal-lg" id="Update">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header bg-primary">
+            <div class="modal-header ">
                 <h4 class="modal-title" id="modal-basic-title">แก้ไขข้อมูล</h4>
                 <button type="button" class="close" aria-label="Close" (click)="hideModal2()">
                     <span aria-hidden="true">&times;</span>
@@ -142,14 +142,14 @@
                         <div class="form-group">
                             <label>ชื่อ</label>
                             <input type="text" class="form-control" placeholder="ชื่อ..." name="name"
-                                [(ngModel)]="ngUpdate.firstName">
+                                [(ngModel)]="ngUpdate.firstName" >
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label>นาม-สกุล</label>
                             <input type="text" class="form-control" placeholder="นาม-สกุล..." name="lastName"
-                                [(ngModel)]="ngUpdate.lastName">
+                                [(ngModel)]="ngUpdate.lastName" >
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                         <div class="form-group">
                             <label>ยืนยัน password ก่อนจะแก้ไขข้อมูล</label>
                             <input type="password" class="form-control" placeholder="Password" name="name"
-                                [(ngModel)]="testPassWord">
+                                [(ngModel)]="testPassWord" [ngClass]="{'is-invalid': isCheck&&!testPassWord}">
                         </div>
                     </div>
                 </div>

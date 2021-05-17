@@ -66,5 +66,5 @@ export interface ReqOption {
 }
 
 export interface ResDataQuestion {
-  text: string;
+  mean: number;
 }

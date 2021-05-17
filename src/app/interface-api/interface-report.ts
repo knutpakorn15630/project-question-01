@@ -15,7 +15,23 @@ export interface ResReport {
 export interface ResDataReport {
     id: number;
     mainFormName: string;
+    mean: number;
     createdAt: string;
     updatedAt: string;
     mainFormId: number;
+    answers: Answer[];
 }
+
+export interface Answer {
+    id: number;
+    point: number;
+    text: any;
+    options: Options;
+}
+
+export interface Options {
+    id: number;
+    nameOption: string;
+}
+
+

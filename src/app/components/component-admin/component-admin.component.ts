@@ -58,6 +58,7 @@ export class ComponentAdminComponent implements OnInit {
   }
 
   hideModal2() {
+    this.isCheck = false;
     $('#Update').modal('hide');
     this.DataNull();
   }
@@ -168,6 +169,7 @@ export class ComponentAdminComponent implements OnInit {
         showConfirmButton: false,
         timer: 1000
       });
+      this.isCheck = true;
       return;
     }
 
@@ -179,6 +181,7 @@ export class ComponentAdminComponent implements OnInit {
         });
         this.GetUser();
         this.hideModal2();
+        this.isCheck = false;
         this.testPassWord = '';
       },
       (err) => {

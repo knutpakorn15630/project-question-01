@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComponentAdminComponent } from './components/component-admin/component-admin.component';
+import { ComponentChartComponent } from './components/component-chart/component-chart.component';
 import { ComponentFormComponent } from './components/component-form/component-form.component';
 import { ComponentLoginComponent } from './components/component-login/component-login.component';
 import { ComponentQuestionComponent } from './components/component-question/component-question.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'total',
         component: ComponentTotalComponent
+      },
+      {
+        path: 'chart',
+        component: ComponentChartComponent
       }
     ]
   }

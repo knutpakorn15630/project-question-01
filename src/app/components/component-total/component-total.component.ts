@@ -32,12 +32,7 @@ export class ComponentTotalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.broadcaster.listen('token-test').subscribe(
-      (res) => {
-        console.log(`test data`);
         this.getReport();
-      }
-    );
   }
 
   getReport() {
@@ -48,6 +43,7 @@ export class ComponentTotalComponent implements OnInit {
     this.callApi.getReport(body).subscribe(
       (res) => {
         this.DataReport = res;
+        console.log(`this is Report ${this.DataReport}`);
         this.setPageTotal(this.DataReport.totalPages);
       }
     );

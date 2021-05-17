@@ -19,7 +19,8 @@
                 </div>
                 <div class="card-body" style="margin-left: 1rem;">
                     <span *ngFor="let item2 of item.titles; let i2 = index">
-                        <label class="col-form-label" [ngClass]="{'is-red': CheckRed && item2.isCheck !== true}">{{item2.title}}</label>
+                        <label class="col-form-label"
+                            [ngClass]="{'is-red': CheckRed && item2.isCheck !== true}">{{item2.title}}</label>
                         <div class="form-group" style="padding-bottom: 5px;">
                             <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
                                 <label class="form-check-label" style="margin-bottom: 10px;">
@@ -37,6 +38,17 @@
 
 
     <div class="card-footer">
-        <button type="submit" class="btn btn-primary  float-right" (click)="SubmitDataQuestion()">บันทึก</button>
+        <button type="submit" class="btn btn-primary  float-right"
+            (click)="SubmitDataQuestion(content)">บันทึก</button>
     </div>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-body" style="text-align: center;" *ngIf="data2 && data2.text">
+            <p>{{data2.text}}</p>
+        </div>
+        <div class="modal-footer" *ngIf="data2 && data2.text">
+            <button type="button" class="btn btn-primary" (click)="SwPage(); c('Save click')">ถัดไป</button>
+        </div>
+    </ng-template>
+
 </div>
