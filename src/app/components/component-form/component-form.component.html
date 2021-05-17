@@ -34,11 +34,11 @@
                                         <!-- <th style="width: 150px"></th> -->
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>test 1</td>
-                                        <td>12/10/2019</td>
+                                <tbody *ngIf="DataMainForm && DataMainForm.data && DataMainForm.data.length > 0">
+                                    <tr *ngFor="let item of DataMainForm.data; let i = index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{item.nameForm}}</td>
+                                        <td>{{item.createdAt | pipedatethai: 'medium'}}</td>
                                         <td><button type="button" class="btn btn-block bg-primary"> <i
                                                     class="fas fa-upload">&nbsp;</i>แก้ไขข้อมูล</button>
                                         </td>
@@ -47,7 +47,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                                <tbody>
+                                <tbody *ngIf="!DataMainForm && !DataMainForm.data && DataMainForm.data.length == 0">
                                     <tr>
                                         <td colspan="8" style="text-align: center;">ไม่มีข้อมูล</td>
                                     </tr>
@@ -55,6 +55,14 @@
                             </table>
                         </div>
                         <!-- /.card-body -->
+                        <div class="card-footer clearfix" *ngIf="DataMainForm && DataMainForm.data && DataMainForm.data.length > 0">
+                            <span class="pagination pagination-sm m-0 float-right">
+                                <ngb-pagination class="d-flex justify-content-end" [maxSize]="5" [rotate]="true"
+                                    [boundaryLinks]="true" [collectionSize]="ngPang.total" [(page)]="ngPang.Pang"
+                                    (click)="pageTest()">
+                                </ngb-pagination>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

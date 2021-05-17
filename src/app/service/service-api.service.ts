@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ReqShowForm, ResShowForm } from '../interface-api/interface-from';
 import { ReqLogin, ResLogin } from '../interface-api/interface-Login';
 import { ReqLogout, ResLogout } from '../interface-api/interface-Loout';
 import { ReqRefreshToken, ResRefreshToken } from '../interface-api/interface-refreshToken';
@@ -70,5 +71,13 @@ export class ServiceApiService {
   public RefreshToken(body: ReqRefreshToken): Observable<ResRefreshToken> {
     return this.httpApiClient.post<ResRefreshToken>(`${this.apiUrl}/api/user/token`, body);
   }
+
+
+  // ----------------------------------------------From------------------------------------------------------
+
+  public GetMainForm(body: ReqShowForm): Observable<ResShowForm> {
+    return this.httpApiClient.post<ResShowForm>(`${this.apiUrl}/api/main/gets`, body);
+  }
+
 
 }
