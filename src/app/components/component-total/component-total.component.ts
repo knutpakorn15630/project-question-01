@@ -50,15 +50,15 @@ export class ComponentTotalComponent implements OnInit {
         this.DataReport = res;
         this.DataReport.data.forEach((x) => {
           if (x.mean >= 4.21) {
-            this.data2.text = 'มีความสุขมวลรวมในระดับสูงที่สุด';
-          } else if (x.mean >= 3) {
-            this.data2.text = 'มีความสุขมวลรวมในระดับสูง';
+            x.text = 'มีความสุขมวลรวมในระดับสูงที่สุด';
+          } else if (x.mean >= 3.41) {
+            x.text = 'มีความสุขมวลรวมในระดับสูง';
           } else if (x.mean >= 2.61) {
-            this.data2.text = 'มีความสุขมวลรวมในระดับปานกลาง';
+            x.text = 'มีความสุขมวลรวมในระดับปานกลาง';
           } else if (x.mean >= 1.81) {
-            this.data2.text = 'มีความสุขมวลรวมในระดับต่ำ ';
+            x.text = 'มีความสุขมวลรวมในระดับต่ำ ';
           } else {
-            this.data2.text = 'มีความสุขมวลรวมในระดับต่ำที่สุด';
+            x.text = 'มีความสุขมวลรวมในระดับต่ำที่สุด';
           }
         });
         console.log(`this is Report ${this.DataReport}`);
