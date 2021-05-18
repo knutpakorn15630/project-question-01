@@ -1,4 +1,4 @@
-<div class="container" *ngIf="DataResQuestion && DataResQuestion.mainTitle && DataResQuestion.mainTitle.length > 0">
+<div class="container" *ngIf="DataResQuestion && DataResQuestion.maintitle && DataResQuestion.maintitle.length > 0">
     <div class="row" style="margin-top: 1rem;">
         <div class="container">
             <div class="card card-outline card-primary">
@@ -10,11 +10,11 @@
         </div>
     </div>
     <!-- /.card -->
-    <div class="row" style="margin-top: 5px;" *ngFor="let item of DataResQuestion.mainTitle;  let i = index">
+    <div class="row" style="margin-top: 5px;" *ngFor="let item of DataResQuestion.maintitle;  let i = index">
         <div class="container">
             <div class="card">
                 <div class="card-header" style="margin-top: 10px;">
-                    <h5 class="card-subtitle mb-2 ">{{item.mainTitle}}</h5>
+                    <h5 class="card-subtitle mb-2 ">{{item.maintitle}}</h5>
                     <!-- /.card-tools -->
                 </div>
                 <div class="card-body" style="margin-left: 1rem;">

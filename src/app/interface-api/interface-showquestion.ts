@@ -3,7 +3,7 @@ export interface ResShowQuestion {
   nameForm: string;
   createdAt: string;
   updatedAt: string;
-  mainTitle: ResMainTitle[];
+  maintitle: ResMainTitle[];
 }
 
 export interface ResMainTitle {
@@ -13,17 +13,20 @@ export interface ResMainTitle {
   StatementEnd?: string;
   createdAt: string;
   updatedAt: string;
+  mainformId: number;
   mainFormId: number;
   titles: ResTitle[];
 }
 
 export interface ResTitle {
+
   id: number;
   title: string;
   min: number;
   max: number;
   createdAt: string;
   updatedAt: string;
+  maintitleId: number;
   mainTitleId: number;
   isCheck: boolean;
   options: ResOption[];
@@ -36,8 +39,8 @@ export interface ResOption {
   point?: number;
   createdAt: string;
   updatedAt: string;
-  titleId: number;
   isSelect: boolean;
+  titleId: number;
 }
 
 

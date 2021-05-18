@@ -49,12 +49,12 @@ export class ComponentQuestionComponent implements OnInit {
 
 
   selectItem(i1: number, i2: number, i3: number) {
-    this.DataResQuestion.mainTitle[i1].titles[i2].options.forEach((x, index) => {
-      this.DataResQuestion.mainTitle[i1].titles[i2].options[index].text = '';
-      this.DataResQuestion.mainTitle[i1].titles[i2].options[index].isSelect = false;
+    this.DataResQuestion.maintitle[i1].titles[i2].options.forEach((x, index) => {
+      this.DataResQuestion.maintitle[i1].titles[i2].options[index].text = '';
+      this.DataResQuestion.maintitle[i1].titles[i2].options[index].isSelect = false;
     });
-    this.DataResQuestion.mainTitle[i1].titles[i2].options[i3].isSelect = true;
-    this.DataResQuestion.mainTitle[i1].titles[i2].isCheck = true;
+    this.DataResQuestion.maintitle[i1].titles[i2].options[i3].isSelect = true;
+    this.DataResQuestion.maintitle[i1].titles[i2].isCheck = true;
 
   }
 
@@ -106,7 +106,7 @@ export class ComponentQuestionComponent implements OnInit {
       mainTitle: []
     };
 
-    for (const data1 of this.DataResQuestion.mainTitle) {
+    for (const data1 of this.DataResQuestion.maintitle) {
       const mainTitle: ReqMainTitle = {
         id: data1.id,
         titles: []

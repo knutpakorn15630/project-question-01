@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-component-chart',
@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComponentChartComponent implements OnInit {
 
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+

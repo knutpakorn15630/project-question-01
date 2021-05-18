@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ComponentChartComponent } from './components/component-chart/component-chart.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
