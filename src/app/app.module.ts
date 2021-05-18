@@ -18,6 +18,7 @@ import { PipedatethaiPipe } from './pipes/pipedatethai.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ComponentChartComponent } from './components/component-chart/component-chart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ComponentChartComponent } from './components/component-chart/component-
     RouterModule,
     HttpClientModule,
     NgbModule,
+    NgApexchartsModule
 
   ],
   providers: [

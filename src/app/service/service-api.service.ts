@@ -9,6 +9,7 @@ import { ReqRefreshToken, ResRefreshToken } from '../interface-api/interface-ref
 import { ReqReport, ResReport } from '../interface-api/interface-report';
 import { ReqDataQuestion, ResDataQuestion, ResShowQuestion } from '../interface-api/interface-showquestion';
 import { ReqCreateUser, ReqUpdateUser, ResCreateUser, ResUpdateUser, ResUser } from '../interface-api/interface-user';
+import { ResShowChart } from '../interface-api/interfae-Chart';
 
 @Injectable({
   providedIn: 'root'
@@ -79,5 +80,10 @@ export class ServiceApiService {
     return this.httpApiClient.post<ResShowForm>(`${this.apiUrl}/api/main/gets`, body);
   }
 
+  // -------------------------------------------------------Chart---------------------------------------------
+
+  public showChart(): Observable<ResShowChart> {
+    return this.httpApiClient.get<ResShowChart>(`${this.apiUrl}/api/report/show`);
+  }
 
 }
