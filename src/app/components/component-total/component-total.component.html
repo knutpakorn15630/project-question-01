@@ -32,6 +32,7 @@
                                         <th>อายุ</th>
                                         <th>ระดับการศึกษา</th>
                                         <th>อาชีพ</th>
+                                        <th>ค่าเฉลี่ย</th>
                                         <!-- <th style="width: 150px"></th> -->
                                     </tr>
                                 </thead>
@@ -40,7 +41,7 @@
                                         <td>{{i+1}}</td>
                                         <td>{{item.mainFormName}}</td>
                                         <td *ngFor="let item2 of item.answers">{{item2.options.nameOption}}</td>
-                                        
+                                        <td>{{item.mean }}</td>
                                     </tr>
                                 </tbody>
                                 <tbody *ngIf="!DataReport && !DataReport.data && DataReport.data.length == 0">

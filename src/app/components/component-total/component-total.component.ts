@@ -22,6 +22,7 @@ export class ComponentTotalComponent implements OnInit {
     total: 100,
   };
 
+
   DataReport: ResReport;
 
   constructor(
@@ -32,7 +33,7 @@ export class ComponentTotalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-        this.getReport();
+    this.getReport();
   }
 
   getReport() {
