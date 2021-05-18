@@ -24,10 +24,8 @@ export type ChartOptions = {
 export class ComponentChartComponent implements OnInit {
   DataChart: ResShowChart = null;
 
-  testarray = [];
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-
 
   constructor(private callApi: ServiceApiService) { }
 
@@ -37,33 +35,27 @@ export class ComponentChartComponent implements OnInit {
         this.DataChart = res;
         this.DataChart.data.forEach((tiTle1) => {
           console.log(`this test ${tiTle1.title}`);
-          tiTle1.options.forEach((Option1) => {
-            console.log('sdafkasn', Option1.answers);
-            this.testarray.push(Option1.answers);
-            console.log(`-----------------${this.testarray}`);
-            this.chartOptions = {
-              series: [3, 2],
-              chart: {
-                width: 380,
-                type: 'pie'
-              },
-              labels: ['ชาย', 'หญิง'],
-              responsive: [
-                {
-                  breakpoint: 480,
-                  options: {
-                    chart: {
-                      width: 200
-                    },
-                    legend: {
-                      position: 'bottom'
-                    }
+          this.chartOptions = {
+            series: [3, 2],
+            chart: {
+              width: 380,
+              type: 'pie'
+            },
+            labels: ['ชาย', 'หญิง'],
+            responsive: [
+              {
+                breakpoint: 480,
+                options: {
+                  chart: {
+                    width: 200
+                  },
+                  legend: {
+                    position: 'bottom'
                   }
                 }
-              ]
-            };
-
-          });
+              }
+            ]
+          };
         });
       }
     );
