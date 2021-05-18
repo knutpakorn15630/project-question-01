@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ComponentChartComponent } from './components/component-chart/component-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     RouterModule,
     HttpClientModule,
     NgbModule,
-    NgApexchartsModule
-
+    NgApexchartsModule,
+    ChartsModule
   ],
   providers: [
     {
