@@ -83,7 +83,7 @@ export class ComponentLoginComponent implements OnInit {
         });
         this.broadcaster.emitEvent('token-login', res);
         this.serviceLogin.setLogin(res);
-        this.router.navigateByUrl('/dashboard/form');
+        this.router.navigateByUrl('/dashboard/chart');
       },
       (err) => {
         console.log(`login err ${err}`);

@@ -42,12 +42,12 @@ export class ComponentChartComponent implements OnInit {
             this.testarray.push(Option1.answers);
             console.log(`-----------------${this.testarray}`);
             this.chartOptions = {
-              series: [10, 45, 30],
+              series: [3, 2],
               chart: {
                 width: 380,
                 type: 'pie'
               },
-              labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+              labels: ['ชาย', 'หญิง'],
               responsive: [
                 {
                   breakpoint: 480,
