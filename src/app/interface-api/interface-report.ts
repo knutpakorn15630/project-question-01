@@ -16,6 +16,7 @@ export interface ResDataReport {
     id: number;
     mainFormName: string;
     mean: number;
+    text: string;
     createdAt: string;
     updatedAt: string;
     mainFormId: number;
