@@ -41,8 +41,7 @@
                                         <td>{{i+1}}</td>
                                         <td>{{item.mainFormName}}</td>
                                         <td *ngFor="let item2 of item.answers">{{item2.options.nameOption}}</td>
-                                        <td>{{item.mean}}</td>
-                                        <td>{{item.text}}</td>
+                                        <td>{{item.mean + ' ' + item.text}}</td>
                                     </tr>
                                 </tbody>
                                 <tbody *ngIf="!DataReport && !DataReport.data && DataReport.data.length == 0">
