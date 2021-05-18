@@ -22,6 +22,10 @@ export class ComponentTotalComponent implements OnInit {
     total: 100,
   };
 
+  data2 = {
+    text: ''
+  };
+
 
   DataReport: ResReport;
 
@@ -44,6 +48,19 @@ export class ComponentTotalComponent implements OnInit {
     this.callApi.getReport(body).subscribe(
       (res) => {
         this.DataReport = res;
+        this.DataReport.data.forEach((x) => {
+          if (x.mean >= 4.21) {
+            this.data2.text = 'มีความสุขมวลรวมในระดับสูงที่สุด';
+          } else if (x.mean >= 3) {
+            this.data2.text = 'มีความสุขมวลรวมในระดับสูง';
+          } else if (x.mean >= 2.61) {
+            this.data2.text = 'มีความสุขมวลรวมในระดับปานกลาง';
+          } else if (x.mean >= 1.81) {
+            this.data2.text = 'มีความสุขมวลรวมในระดับต่ำ ';
+          } else {
+            this.data2.text = 'มีความสุขมวลรวมในระดับต่ำที่สุด';
+          }
+        });
         console.log(`this is Report ${this.DataReport}`);
         this.setPageTotal(this.DataReport.totalPages);
       }

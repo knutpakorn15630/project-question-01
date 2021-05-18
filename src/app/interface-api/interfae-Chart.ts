@@ -1,25 +1,22 @@
 export interface ResShowChart {
-    title: ResTitleChart[];
-    data: ResShowDataChart[];
+    data: ResTitleChart[];
 }
 
 export interface ResTitleChart {
     id: number;
     title: string;
+    options: ResShowDataChart[];
 }
 
 export interface ResShowDataChart {
     id: number;
-    point: number;
-    Text: any;
-    createdAt: string;
-    updatedAt: string;
-    optionId: number;
-    reportId: number;
-    options: Options;
+    nameOption: string;
+    titleId: number;
+    answers: Options[];
 }
 
 export interface Options {
     id: number;
     nameOption: string;
 }
+
