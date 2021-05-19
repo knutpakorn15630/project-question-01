@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                              <canvas baseChart *ngIf="pieChartData" [data]="pieChartData[i]"
+                              <canvas id="pie-chart" baseChart *ngIf="pieChartData" [data]="pieChartData[i]"
                                     [labels]="pieChartLabels[i]" [chartType]="pieChartType" [options]="pieChartOptions"
                                     [plugins]="pieChartPlugins" [legend]="pieChartLegend">
                                 </canvas>

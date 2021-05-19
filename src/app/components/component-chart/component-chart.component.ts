@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import * as Chart from 'chart.js';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-// import * as pluginLabels from 'chartjs-plugin-labels';
+import * as pluginLabels from 'chartjs-plugin-labels';
 import { Label, SingleDataSet } from 'ng2-charts';
 import { ResShowChart } from 'src/app/interface-api/interfae-Chart';
 import { ServiceApiService } from 'src/app/service/service-api.service';
@@ -16,6 +17,10 @@ import { ServiceApiService } from 'src/app/service/service-api.service';
 export class ComponentChartComponent implements OnInit {
   DataChart: ResShowChart = null;
 
+  myChart: any;
+  typeChart: any;
+  dataChart: any;
+  optionsChart: any;
 
   pieChartOptions: ChartOptions;
   pieChartLabels: Label[] = [];
@@ -56,23 +61,26 @@ export class ComponentChartComponent implements OnInit {
       this.pieChartOptions = this.createOptions();
       this.pieChartLabels.push(renderLabel);
       this.pieChartData.push(renderData);
-      this.pieChartType = 'pie';
+      this.pieChartType = 'doughnut';
       this.pieChartLegend = true;
+
     });
-    // this.pieChartPlugins = [pluginLabels];
+
+    this.myChart = new Chart('#test', {
+      type: 'doughnut',
+    });
+    this.pieChartPlugins = [pluginLabels];
   }
 
   private createOptions(): ChartOptions {
     return {
-      rotation: 1,
+      rotation: 2,
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
         labels: {
           render: 'percentage',
-          fontSize: 10,
-          fontColor: ['#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2',
-            '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2'],
+          fontColor: ['#17202A '],
           precision: 2
         },
       },

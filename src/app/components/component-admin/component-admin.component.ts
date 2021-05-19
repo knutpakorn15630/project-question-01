@@ -197,5 +197,33 @@ export class ComponentAdminComponent implements OnInit {
   }
 
 
+  deleteUser(id: number) {
+    Swal.fire({
+      title: 'ยืนยันการลบข้อมูล',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'ลบข้อสำเร็จ!',
+          'ข้อมูลของคุณถูกลบแล้ว',
+          'success'
+        );
+        this.callApi.deleteUser(id).subscribe(
+          (res) => {
+            this.GetUser();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
+    });
+  }
+
+
 
 }

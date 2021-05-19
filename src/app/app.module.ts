@@ -20,7 +20,6 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { ComponentChartComponent } from './components/component-chart/component-chart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartsModule } from 'ng2-charts';
-import 'chart.piecelabel.js';
 
 @NgModule({
   declarations: [
