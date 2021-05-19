@@ -25,7 +25,7 @@ export class ComponentChartComponent implements OnInit {
   pieChartPlugins = [];
   constructor(private callApi: ServiceApiService) { }
 
-  async ngOnInit(): Promise<void>  {
+  async ngOnInit(): Promise<void> {
     await this.showChart();
     await this.sleeper(300);
     interface DataChart2 {
@@ -70,10 +70,11 @@ export class ComponentChartComponent implements OnInit {
       plugins: {
         labels: {
           render: 'percentage',
+          fontSize: 10,
           fontColor: ['#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2',
             '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2'],
           precision: 2
-        }
+        },
       },
     };
   }

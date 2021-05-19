@@ -177,7 +177,7 @@ export class ComponentAdminComponent implements OnInit {
       (res) => {
         this.Toast.fire({
           icon: 'success',
-          title: 'ลงชื่อเข้าใช้เรียบร้อยแล้ว'
+          title: 'แก้ไขเรียบร้อยแล้ว'
         });
         this.GetUser();
         this.hideModal2();
