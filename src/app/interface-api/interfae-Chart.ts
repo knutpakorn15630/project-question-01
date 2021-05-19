@@ -11,6 +11,7 @@ export interface ResTitleChart {
 export interface ResShowDataChart {
     id: number;
     nameOption: string;
+    textOptionChart: string;
     titleId: number;
     answers: Options[];
 }

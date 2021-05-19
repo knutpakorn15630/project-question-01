@@ -61,7 +61,7 @@ export class ComponentChartComponent implements OnInit {
       this.pieChartOptions = this.createOptions();
       this.pieChartLabels.push(renderLabel);
       this.pieChartData.push(renderData);
-      this.pieChartType = 'doughnut';
+      this.pieChartType = 'pie';
       this.pieChartLegend = true;
 
     });
