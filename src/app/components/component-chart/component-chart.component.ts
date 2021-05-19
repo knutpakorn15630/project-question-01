@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import * as Chart from 'chart.js';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-// import * as pluginLabels from 'chartjs-plugin-labels';
+import * as pluginLabels from 'chartjs-plugin-labels';
 import { Label, SingleDataSet } from 'ng2-charts';
 import { ResShowChart } from 'src/app/interface-api/interfae-Chart';
 import { ServiceApiService } from 'src/app/service/service-api.service';
@@ -16,6 +17,10 @@ import { ServiceApiService } from 'src/app/service/service-api.service';
 export class ComponentChartComponent implements OnInit {
   DataChart: ResShowChart = null;
 
+  myChart: any;
+  typeChart: any;
+  dataChart: any;
+  optionsChart: any;
 
   pieChartOptions: ChartOptions;
   pieChartLabels: Label[] = [];
@@ -25,7 +30,7 @@ export class ComponentChartComponent implements OnInit {
   pieChartPlugins = [];
   constructor(private callApi: ServiceApiService) { }
 
-  async ngOnInit(): Promise<void>  {
+  async ngOnInit(): Promise<void> {
     await this.showChart();
     await this.sleeper(300);
     interface DataChart2 {
@@ -58,20 +63,22 @@ export class ComponentChartComponent implements OnInit {
       this.pieChartData.push(renderData);
       this.pieChartType = 'doughnut';
       this.pieChartLegend = true;
+
     });
-    // this.pieChartPlugins = [pluginLabels];
+
+    this.myChart = new Chart('#test', {});
+    this.pieChartPlugins = [pluginLabels];
   }
 
   private createOptions(): ChartOptions {
     return {
-      rotation: 1,
+      rotation: 2,
       responsive: true,
       maintainAspectRatio: true,
       plugins: {
         labels: {
           render: 'percentage',
-          fontColor: ['#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2',
-            '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2', '#8A2BE2'],
+          fontColor: ['#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4'],
           precision: 2
         }
       },
