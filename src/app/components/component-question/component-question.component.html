@@ -1,9 +1,9 @@
-<div class="container" *ngIf="DataResQuestion && DataResQuestion.maintitle && DataResQuestion.maintitle.length > 0">
+<div class="container" *ngIf="DataResQuestion && DataResQuestion.maintitle && DataResQuestion.maintitle.length > 0" style="background-color:#0bbff4;">
     <div class="row" style="margin-top: 1rem;">
         <div class="container">
-            <div class="card card-outline card-primary">
-                <div class="card-header" style="height: 8rem;">
-                    <h3 style="margin-top: 1rem;">{{DataResQuestion.nameForm}}</h3>
+            <div class="card card-outline">
+                <div class="card-header">
+                    <h5 style="margin-top: 1rem;text-align: center;">{{DataResQuestion.nameForm}}</h5>
                     <!-- /.card-tools -->
                 </div>
             </div>
@@ -22,8 +22,8 @@
                         <label class="col-form-label"
                             [ngClass]="{'is-red': CheckRed && item2.isCheck !== true}">{{item2.title}}</label>
                         <div class="form-group" style="padding-bottom: 5px;">
-                            <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
-                                <label class="form-check-label" style="margin-bottom: 10px;">
+                            <div class="form-check" [ngClass]="{'form-check2' : item3.IsColor === true}" *ngFor="let item3 of item2.options; let i3 = index ">
+                                <label class="form-check-label" style="margin-bottom: 10px;" [ngClass]="{'form-check-label2' : item3.IsColor === true}">
                                     <input class="form-checkmark-input" type="radio" (click)="selectItem(i, i2, i3)"
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}

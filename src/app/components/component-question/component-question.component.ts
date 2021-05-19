@@ -36,6 +36,8 @@ export class ComponentQuestionComponent implements OnInit {
     text: ''
   };
 
+  IsColor = false;
+
   // tslint:disable-next-line:max-line-length
   constructor(private callApi: ServiceApiService, private router: Router, private broadcaster: NgBroadcasterService, config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
@@ -52,10 +54,12 @@ export class ComponentQuestionComponent implements OnInit {
     this.DataResQuestion.maintitle[i1].titles[i2].options.forEach((x, index) => {
       this.DataResQuestion.maintitle[i1].titles[i2].options[index].text = '';
       this.DataResQuestion.maintitle[i1].titles[i2].options[index].isSelect = false;
+      this.DataResQuestion.maintitle[i1].titles[i2].options[index].IsColor = false;
+
     });
     this.DataResQuestion.maintitle[i1].titles[i2].options[i3].isSelect = true;
+    this.DataResQuestion.maintitle[i1].titles[i2].options[i3].IsColor = true;
     this.DataResQuestion.maintitle[i1].titles[i2].isCheck = true;
-
   }
 
   ShowDataQuestion() {
