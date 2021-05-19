@@ -61,12 +61,14 @@ export class ComponentChartComponent implements OnInit {
       this.pieChartOptions = this.createOptions();
       this.pieChartLabels.push(renderLabel);
       this.pieChartData.push(renderData);
-      this.pieChartType = 'pie';
+      this.pieChartType = 'doughnut';
       this.pieChartLegend = true;
 
     });
 
-    this.myChart = new Chart('#test', {});
+    this.myChart = new Chart('#test', {
+      type: 'doughnut',
+    });
     this.pieChartPlugins = [pluginLabels];
   }
 
@@ -78,7 +80,8 @@ export class ComponentChartComponent implements OnInit {
       plugins: {
         labels: {
           render: 'percentage',
-          fontColor: ['#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4'],
+          fontColor: ['#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4',
+            '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4'],
           precision: 2
         }
       },
