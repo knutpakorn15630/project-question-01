@@ -1,9 +1,9 @@
-<div class="container" *ngIf="DataResQuestion && DataResQuestion.maintitle && DataResQuestion.maintitle.length > 0">
+<div class="container" *ngIf="DataResQuestion && DataResQuestion.maintitle && DataResQuestion.maintitle.length > 0" style="background-color:#0bbff4;">
     <div class="row" style="margin-top: 1rem;">
         <div class="container">
-            <div class="card card-outline card-primary">
-                <div class="card-header" style="height: 8rem;">
-                    <h3 style="margin-top: 1rem;">{{DataResQuestion.nameForm}}</h3>
+            <div class="card card-outline">
+                <div class="card-header">
+                    <h5 style="margin-top: 1rem;text-align: center;">{{DataResQuestion.nameForm}}</h5>
                     <!-- /.card-tools -->
                 </div>
             </div>
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-header" style="margin-top: 10px;">
-                    <h5 class="card-subtitle mb-2 ">{{item.maintitle}}</h5>
+                    <h5 class="card-subtitle mb-2 ">{{item.mainTitle}}</h5>
                     <!-- /.card-tools -->
                 </div>
                 <div class="card-body" style="margin-left: 1rem;">
@@ -22,8 +22,8 @@
                         <label class="col-form-label"
                             [ngClass]="{'is-red': CheckRed && item2.isCheck !== true}">{{item2.title}}</label>
                         <div class="form-group" style="padding-bottom: 5px;">
-                            <div class="form-check" *ngFor="let item3 of item2.options; let i3 = index ">
-                                <label class="form-check-label" style="margin-bottom: 10px;">
+                            <div class="form-check" [ngClass]="{'form-check2' : item3.IsColor === true}" *ngFor="let item3 of item2.options; let i3 = index ">
+                                <label class="form-check-label" style="margin-bottom: 10px;" [ngClass]="{'form-check-label2' : item3.IsColor === true}">
                                     <input class="form-checkmark-input" type="radio" (click)="selectItem(i, i2, i3)"
                                         [checked]="item3.isSelect">
                                     {{item3.nameOption}}
@@ -36,18 +36,25 @@
         </div>
     </div>
 
-
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary  float-right"
+        <button type="button" class="btn btn-primary btn-block" style="margin-bottom: 1rem;"
             (click)="SubmitDataQuestion(content)">บันทึก</button>
-    </div>
+
+            <div class="row" style="margin-top: 5px;">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-body" style="margin-left: 1rem; text-align: center;">
+                            <p class="font-weight-bold">แบบสอบถามดังกล่าวพัฒนาจากงานวิจัยของ <br>ต้องรัก จิตรบรรเทา (2562) และเป็นส่วนหนึ่ง<br>จากยุทธศาสตร์ที่ 1 การพัฒนาท้องถิ่น<br> โครงการส่งเสริมสุขภาวะชุมชนเพื่อวัดดัชนี<br>วัดความสุขมวลรวมชุมชน<br>มหาวิทยาลัยราชภัฏเชียงราย</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     <ng-template #content let-c="close" let-d="dismiss">
         <div class="modal-body" style="text-align: center;" *ngIf="data2 && data2.text">
             <p>{{data2.text}}</p>
         </div>
         <div class="modal-footer" *ngIf="data2 && data2.text">
-            <button type="button" class="btn btn-primary" (click)="SwPage(); c('Save click')">ถัดไป</button>
+            <button type="button" class="btn btn-primary btn-block" (click)="SwPage(); c('Save click')">ตกลง</button>
         </div>
     </ng-template>
 

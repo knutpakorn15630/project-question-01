@@ -38,6 +38,7 @@ export interface ResOption {
   text: any;
   point?: number;
   createdAt: string;
+  IsColor: boolean;
   updatedAt: string;
   isSelect: boolean;
   titleId: number;

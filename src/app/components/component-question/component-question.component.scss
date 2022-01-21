@@ -1,6 +1,52 @@
+
 .is-red{
     color: red;
 }
 .is-green{
     color: green;
 }
+
+
+/*Custom Card*/
+.card
+{
+    border-radius: 20px;
+}
+
+/*Custom Common form*/
+.form-check{
+    padding: 0px;
+}
+.col-form-label
+{
+    font-size: 1.4rem;
+}
+
+
+/*Custom radio Style สำหรับข้อที่เลือก*/
+.form-check .form-check-label{
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+    color: #000 !important;
+    letter-spacing: 2px;
+    width: 100%;
+}
+
+
+/*Custom radio Style สำหรับข้อที่เลือก*/
+.form-check2 .form-check-label2{
+    border: 1px solid #d1d1d1;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #ffb72a;
+    text-align: center;
+    color: #fff !important;
+    letter-spacing: 2px;
+    width: 100%;
+}
+

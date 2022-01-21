@@ -80,10 +80,9 @@ export class ComponentChartComponent implements OnInit {
       plugins: {
         labels: {
           render: 'percentage',
-          fontColor: ['#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4',
-            '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4', '#0031d4'],
+          fontColor: ['#17202A '],
           precision: 2
-        }
+        },
       },
     };
   }

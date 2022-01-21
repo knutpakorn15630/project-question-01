@@ -48,3 +48,9 @@ export interface ResCreateUser {
     updatedAt: string;
     createdAt: string;
 }
+
+
+
+export interface ResDeleteUser {
+    msg: string;
+}

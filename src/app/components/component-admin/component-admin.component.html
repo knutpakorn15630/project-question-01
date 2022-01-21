@@ -35,7 +35,6 @@
                                         <th>วันที่-สร้าง</th>
                                         <th>วันที่-อัพเดท</th>
                                         <th style="width: 150px"></th>
-                                        <th style="width: 150px"></th>
                                         <!-- <th style="width: 150px"></th> -->
                                     </tr>
                                 </thead>
@@ -50,9 +49,9 @@
                                         <td><button type="button" class="btn btn-block bg-primary" (click)="UpdateData(Data.id)"> <i
                                                     class="fas fa-upload">&nbsp;</i>แก้ไขข้อมูล</button>
                                         </td>
-                                        <td><button type="button" class="btn btn-block bg-danger"> <i
+                                        <!-- <td><button type="button" class="btn btn-block bg-danger" (click)="deleteUser(Data.id)"> <i
                                                     class="fas fa-trash-alt">&nbsp;</i>ลบข้อมูล</button>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                                 <tbody *ngIf="!DataUser && !DataUser.data && DataUser.data.length == 0">

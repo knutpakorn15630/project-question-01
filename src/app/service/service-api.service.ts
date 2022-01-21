@@ -8,7 +8,7 @@ import { ReqLogout, ResLogout } from '../interface-api/interface-Loout';
 import { ReqRefreshToken, ResRefreshToken } from '../interface-api/interface-refreshToken';
 import { ReqReport, ResReport } from '../interface-api/interface-report';
 import { ReqDataQuestion, ResDataQuestion, ResShowQuestion } from '../interface-api/interface-showquestion';
-import { ReqCreateUser, ReqUpdateUser, ResCreateUser, ResUpdateUser, ResUser } from '../interface-api/interface-user';
+import { ReqCreateUser, ReqUpdateUser, ResCreateUser, ResDeleteUser, ResUpdateUser, ResUser } from '../interface-api/interface-user';
 import { ResShowChart } from '../interface-api/interfae-Chart';
 
 @Injectable({
@@ -64,6 +64,10 @@ export class ServiceApiService {
 
   public CreateUser(body: ReqCreateUser): Observable<ResCreateUser> {
     return this.httpApiClient.post<ResCreateUser>(`${this.apiUrl}/api/user/create`, body);
+  }
+
+  public deleteUser(id: number): Observable<ResDeleteUser> {
+    return this.httpApiClient.delete<ResDeleteUser>(`${this.apiUrl}/api/user/delete/${id}`);
   }
 
 

@@ -177,7 +177,7 @@ export class ComponentAdminComponent implements OnInit {
       (res) => {
         this.Toast.fire({
           icon: 'success',
-          title: 'ลงชื่อเข้าใช้เรียบร้อยแล้ว'
+          title: 'แก้ไขเรียบร้อยแล้ว'
         });
         this.GetUser();
         this.hideModal2();
@@ -194,6 +194,34 @@ export class ComponentAdminComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+
+  deleteUser(id: number) {
+    Swal.fire({
+      title: 'ยืนยันการลบข้อมูล',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'ลบข้อสำเร็จ!',
+          'ข้อมูลของคุณถูกลบแล้ว',
+          'success'
+        );
+        this.callApi.deleteUser(id).subscribe(
+          (res) => {
+            this.GetUser();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+      }
+    });
   }
 
 
